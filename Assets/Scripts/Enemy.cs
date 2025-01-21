@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     //Variables
     Rigidbody enemyRb;
     GameObject player;
-    public float speed = 3;      
+    public float speed = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +25,11 @@ public class Enemy : MonoBehaviour
 
         //Apply force in direction of the player
         enemyRb.AddForce(lookDirection.normalized * speed);
+
+        //Destroy enemy if position is less than y value
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
